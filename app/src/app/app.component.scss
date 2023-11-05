@@ -1,77 +1,75 @@
 body {
-    background-image: url('https://shiptheory.com/blog/content/images/2020/06/ecommercestock.jpeg');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .container {
-    position: relative;
-  }
-  
-  .title {
-    text-align: center;
-    color: #eaf3f0;
-    font-size: 5rem;
-    margin-bottom: 2rem;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
-  }
-  
-  .search-bar {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 15px;
-  }
-  
-  .search-bar input {
-    width: 80%;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    outline: none;
-  }
+  background-image: url('https://blog.hubspot.com/hubfs/ecommerce-10.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  font-size: vw;
+ }
 
-  .icon-container {
-    display: inline-block;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    background-color: #fff;
-    transition: background-color 0.3s ease;
-  }
-  
-  .icon-container i {
-    font-size: 3rem;
-    color: #333;
-    line-height: 3rem;
-    transition: color 0.3s ease;
-  }
-  
-  .search-bar button:hover .icon-container {
-    background-color: rgba(0, 60, 0, 0.8);
-  }
-  
-  .search-bar button:hover .icon-container i {
-    color: #fff;
-  }
-  
-  .search-bar button {
-    width: 20%;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
-  .search-bar button i {
-    font-size: 2rem;
-  }
+.title {
+  text-align: center;
+  margin-bottom: 10%;
+  font-size: 3rem;
+  color: white;
+  text-shadow: 2px 2px 4px rgb(4, 61, 4);
+ }
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding-left: 60%;
+ }
+
+table {
+  background-color: rgba(255, 255, 255, 0.5);
+  font-size: 1rem;
+  border-radius: 10px;
+ }
+
+select {
+  width: 100%;
+  cursor: pointer;
+ }
+
+input[type="checkbox"] {
+  cursor: pointer;
+ } 
+
+input[type="checkbox"]:checked {
+  background-color: darkgreen;
+  color: white;
+ } 
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1rem;
+ }
+
+.buscar {
+  background-color: rgb(135, 184, 135);
+  color: white;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: filter 0.3s ease;
+ }
+
+.buscar:hover {
+  filter: brightness(80%);
+ } 
+ 
+.cancelar {
+  background-color: rgb(190, 162, 110);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: filter 0.3s ease;
+ }
+
+.cancelar:hover {
+  filter: brightness(80%);
+ }
