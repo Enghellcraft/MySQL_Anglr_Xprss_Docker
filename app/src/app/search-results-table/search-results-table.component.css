@@ -26,5 +26,6 @@
   .search-results-table tr:hover {
     background-color: rgba(135, 184, 135, 0.5); 
     transition: background-color 0.3s ease; 
+    cursor: pointer;
   }
   
