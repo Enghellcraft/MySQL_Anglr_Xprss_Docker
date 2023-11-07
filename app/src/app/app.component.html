@@ -22,8 +22,11 @@
       </tr>
     </table>
     <div class="button-container">
-      <button class="buscar">Buscar</button>
-      <button class="cancelar">Cancelar</button>
+      <button class="buscar" (click)="buscar()">Buscar</button>
+      <button class="cancelar" (click)="cancelar()">Cancelar</button>
     </div>
+  </div>
+  <div class="search-results">
+    <app-search-results-table *ngIf="mostrarResultados" [productos]="productos"/>
   </div>
 </body>

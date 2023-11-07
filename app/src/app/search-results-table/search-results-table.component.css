@@ -1,0 +1,30 @@
+.search-results-table {
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    border-radius: 10px;
+  }
+  
+  .search-results-table th, .search-results-table td {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .no-results-message {
+    background-color: #ccc;
+    margin-top: 20px;
+    color: rgb(249, 85, 85);
+    padding: 1em;
+  }
+  
+  .search-results-table th {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: rgb(4, 61, 4);
+  }
+
+  .search-results-table tr:hover {
+    background-color: rgba(135, 184, 135, 0.5); 
+    transition: background-color 0.3s ease; 
+  }
+  

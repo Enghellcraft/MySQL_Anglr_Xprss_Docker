@@ -4,6 +4,8 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
   font-size: vw;
+  height: 100vh;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
  }
 
 .title {
@@ -19,7 +21,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 50vh; // cambio para ubicar la tabla de resultados
   padding-left: 60%;
  }
 
@@ -72,4 +74,9 @@ input[type="checkbox"]:checked {
 
 .cancelar:hover {
   filter: brightness(80%);
+ }
+
+ .search-results {
+  display: flex;
+  justify-content: center;
  }
