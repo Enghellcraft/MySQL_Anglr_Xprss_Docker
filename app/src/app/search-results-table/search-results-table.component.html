@@ -9,12 +9,17 @@
   </thead>
   <tbody>
     <!-- ngFor para mostrar los resultados de la busqueda osea los productos en la lista recibida por input-->
-    <tr *ngFor="let producto of productos">
-      <td>{{ producto.id }}</td>
-      <td>{{ producto.nombre }}</td>
-      <td>{{ producto.gondola }}</td>
-      <td>{{ producto.descripcion }}</td>
-    </tr>
+    <ng-container *ngFor="let producto of productos">
+      <tr (click)="producto.showDetails = !producto.showDetails">
+        <td>{{ producto.id }}</td>
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.gondola }}</td>
+        <td>{{ producto.descripcion }}</td>
+      </tr>
+      <tr *ngIf="producto.showDetails">
+        <td colspan="4"> Extra Stuff...</td>
+      </tr>
+    </ng-container>
   </tbody>
 </table>
 
