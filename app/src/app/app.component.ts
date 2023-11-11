@@ -1,20 +1,35 @@
-import { Component } from '@angular/core';
-import { flush } from '@angular/core/testing';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Producto, Sector, Repositor } from './models';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
-  productos: any[] = productosMock // asignar a esta propiedad la lista de productos para visualizar en la tabla
+  productos: Producto[] = [];
+  sectores: Sector[] = [];
+  repositores: Repositor[] = [];
+
+  constructor(private http: HttpClient) { }
+
+  ngOnInit() {
+    this.http.get<Producto[]>('http://localhost:3000/api/productos').subscribe((data: Producto[]) => {
+      this.productos = data;
+    });
+    this.http.get<Sector[]>('http://localhost:3000/api/sectores').subscribe((data: Sector[]) => {
+      this.sectores = data;
+    });
+    this.http.get<Repositor[]>('http://localhost:3000/api/repositores').subscribe((data: Repositor[]) => {
+      this.repositores = data;
+    });
+  }
 
   mostrarResultados = false
 
   buscar() {
-    // Armar logica para que busque los productos
-    // Por el momento lo dejo solo para que modifique la prop mostrar resultados y que aparezca la tabla
     this.mostrarResultados = true
   }
 
@@ -22,8 +37,3 @@ export class AppComponent {
     this.mostrarResultados = false
   }
 }
-
-const productosMock = [
-  { id: 1, nombre: 'Leche', gondola: 'Lacteos', descripcion: 'Leche' },
-  { id: 2, nombre: 'Pan', gondola: 'Panadería', descripcion: 'Pan blanco 500gms' },
-]

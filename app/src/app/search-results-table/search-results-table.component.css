@@ -12,10 +12,11 @@
   }
   
   .no-results-message {
-    background-color: #ccc;
+    background-color: #f1efef;
     margin-top: 20px;
     color: rgb(249, 85, 85);
     padding: 1em;
+    border-radius: 15px;
   }
   
   .search-results-table th {

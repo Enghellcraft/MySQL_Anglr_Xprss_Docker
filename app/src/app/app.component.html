@@ -7,7 +7,7 @@
         <td class="text">Sector:</td>
         <td>
           <select>
-            <option value="" selected>Seleccione Sector</option>
+            <option value="" *ngFor="let sector of sectores" selected>{{sector.desc_sector}}</option>
           </select>
         </td>
       </tr>
@@ -16,7 +16,7 @@
         <td class="text">Repositor:</td>
         <td>
           <select>
-            <option value="" selected>Seleccione Repositor</option>
+            <option value="" *ngFor="let repositor of repositores" selected>{{repositor.nombre}}</option>
           </select>
         </td>
       </tr>
