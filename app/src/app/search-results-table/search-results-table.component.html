@@ -4,7 +4,6 @@
       <th>Id Producto</th>
       <th>Nombre Producto</th>
       <th>Nombre Góndola</th>
-      <th>Descripción Presentación</th>
     </tr>
   </thead>
   <tbody>
@@ -14,10 +13,9 @@
         <td>{{ producto.id }}</td>
         <td>{{ producto.nombre }}</td>
         <td>{{ producto.gondola }}</td>
-        <td>{{ producto.descripcion }}</td>
       </tr>
       <tr *ngIf="producto.showDetails">
-        <td colspan="4"> Extra Stuff...</td>
+        <td colspan="3">{{ producto.descripcion }}</td>
       </tr>
     </ng-container>
   </tbody>
