@@ -4,7 +4,8 @@ let app = express();
 
 let db = mysql.createConnection({
   host: 'localhost',
-  user: 'group9',
+  /* user: 'group9', */
+  user: 'root',
   password: 'alfrajuceden',
   database: 'mydb'
 });
