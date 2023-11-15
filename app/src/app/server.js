@@ -1,12 +1,21 @@
+// Servidor Backend en Express.js
+// Siempre que se actulice el package-lock.json y package.json
+// ejecutar npm install
+// Para correr el servidor ejecutar >node server.js
+
 let express = require('express');
 let mysql = require('mysql');
 let app = express();
+// Se agrega la libreria Cors dado que tiraba errores al hacer los requests desde la app
+// de Angular
+const cors = require('cors');
+app.use(cors());
 
 let db = mysql.createConnection({
   host: 'localhost',
   /* user: 'group9', */
-  user: 'root',
-  password: 'alfrajuceden',
+  user: 'tpuser', // importante crear el usuario y dar privilegios para acceder a mydb
+  password: 'alfrajuceden', // y colocar esta password
   database: 'mydb'
 });
 
@@ -46,6 +55,19 @@ app.get('/api/repositores', (req, res) => {
     res.json(results);
   });
 });
+
+app.get('/api/repositores/:id', (req, res) => {
+  const idRepositor = req.params.id;
+  const query = 'SELECT * FROM Repositor WHERE id_repositor = ?';
+
+  db.query(query, [idRepositor], (err, results) => {
+    if (err) {
+      throw err;
+    }
+    res.json(results);
+  });
+});
+
 
 app.listen('3000', () => {
   console.log('Server corriendo en el puerto 3000');
