@@ -4,15 +4,17 @@
       <th>Id Producto</th>
       <th>Nombre Producto</th>
       <th>Nombre Góndola</th>
+      <th>Descripción Presentación</th>
     </tr>
   </thead>
   <tbody>
     <!-- ngFor para mostrar los resultados de la busqueda osea los productos en la lista recibida por input-->
     <ng-container *ngFor="let producto of productos">
       <tr (click)="producto.showDetails = !producto.showDetails">
-        <td>{{ producto.id }}</td>
+        <td>{{ producto.id_producto }}</td>
         <td>{{ producto.nombre }}</td>
-        <td>{{ producto.gondola }}</td>
+        <td>{{ producto.nombreGondola }}</td>
+        <td>{{ producto.desc_presentacion }}</td>
       </tr>
       <tr *ngIf="producto.showDetails">
         <td colspan="3">{{ producto.descripcion }}</td>

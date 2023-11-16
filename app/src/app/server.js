@@ -27,7 +27,7 @@ db.connect((err) => {
 });
 
 app.get('/api/productos', (req, res) => {
-  let sql = 'SELECT * FROM Producto';
+  let sql = 'SELECT gp.id_producto, p.nombre, g.nombre AS nombreGondola, pres.desc_presentacion FROM Gondola_Producto AS gp INNER JOIN producto AS p on gp.id_producto = p.id_producto INNER JOIN gondola AS g on gp.id_gondola = g.id_gondola INNER JOIN presentacion AS pres on gp.Presentacion_id_presentacion = pres.id_presentacion';
   db.query(sql, (err, results) => {
     if (err) {
       throw err;
