@@ -48,3 +48,6 @@ Thumbs.db
 
 # Angular cache
 .angular
+
+# Environmental Variables
+.env

@@ -9,12 +9,20 @@ let app = express();
 // Se agrega la libreria Cors dado que tiraba errores al hacer los requests desde la app
 // de Angular
 const cors = require('cors');
-app.use(cors());
+var corsOptions = {
+  origin: 'http://localhost:4200', // solo permite este origen
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // metodos permitidos
+  optionsSuccessStatus: 200 // status
+ }
+app.use(cors(corsOptions));
 
+// Toma las variables del archivo local para seguridad 
+require('dotenv').config({ debug: true });
+// console.log(process.env);
 let db = mysql.createConnection({
   host: 'localhost',
-  user: 'tpuser', // importante crear el usuario y dar privilegios para acceder a mydb
-  password: 'alfrajuceden', // y colocar esta password
+  user: process.env.DB_USER, // importante crear el usuario y dar privilegios para acceder a mydb
+  password: process.env.DB_PASS, // y colocar esta password
   database: 'mydb'
 });
 
