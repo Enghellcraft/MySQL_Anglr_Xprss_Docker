@@ -13,7 +13,6 @@ app.use(cors());
 
 let db = mysql.createConnection({
   host: 'localhost',
-  /* user: 'group9', */
   user: 'tpuser', // importante crear el usuario y dar privilegios para acceder a mydb
   password: 'alfrajuceden', // y colocar esta password
   database: 'mydb'
@@ -37,24 +36,24 @@ app.get('/api/productos', (req, res) => {
 });
 
 app.get('/api/sectores', (req, res) => {
-  let sql = 'SELECT * FROM Sector';
+  let sql = 'SELECT desc_sector FROM Sector';
   db.query(sql, (err, results) => {
     if (err) {
       throw err;
     }
     res.json(results);
   });
-});
+ });
 
 app.get('/api/repositores', (req, res) => {
-  let sql = 'SELECT * FROM Repositor';
+  let sql = 'SELECT nombre FROM Repositor';
   db.query(sql, (err, results) => {
     if (err) {
       throw err;
     }
     res.json(results);
   });
-});
+ });
 
 app.get('/api/repositores/:id', (req, res) => {
   const idRepositor = req.params.id;
