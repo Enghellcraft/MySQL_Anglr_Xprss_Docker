@@ -6,12 +6,12 @@
         <td><input type="checkbox" [(ngModel)]="isCheckedSector"></td>
         <td class="text">Sector:</td>
         <td>
-          <select [(ngModel)]="selectedSector" >
-            <!-- <option value="" *ngIf="!isCheckedSector" selected>Todos</option> -->
-            <option *ngFor="let sector of sectores">{{sector.id_sector}}</option>
-          </select>
+          <select [(ngModel)]="selectedSector">
+            <!-- <option value="">Todos</option> -->
+            <option *ngFor="let sector of sectores" [ngValue]="sector">{{sector.desc_sector}}</option>
+          </select>          
         </td>
-        <span>{{selectedSector}}HOLITA1</span>
+        <span>{{selectedSector}}</span>
       </tr>
       <tr>
         <td><input type="checkbox" [(ngModel)]="isCheckedRepositor"></td>
@@ -19,7 +19,7 @@
         <td>
           <select [(ngModel)]="selectedRepositor">
             <!-- <option value="" *ngIf="!isCheckedRepositor" selected>Todos</option> -->
-            <option *ngFor="let repositor of repositores">{{repositor.id_repositor}}</option>
+            <option *ngFor="let repositor of repositores" [ngValue]="repositor">{{repositor.nombre}}</option>
           </select>
         </td>
         <span>{{selectedRepositor}}</span>

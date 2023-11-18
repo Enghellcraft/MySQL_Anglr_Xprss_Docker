@@ -91,6 +91,11 @@ export class AppComponent implements OnInit {
     console.log(this.selectedRepositor.id_repositor)
     console.log(this.selectedSector.id_sector)
   }
+
+  setRepositor(value: Repositor){
+    console.log(value.id_repositor)
+    this.selectedRepositor = value
+  }
   
   applyFilter(){
     if(this.isCheckedRepositor && this.isCheckedSector){
