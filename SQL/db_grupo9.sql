@@ -213,4 +213,6 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-SELECT gp.id_producto, p.nombre, g.nombre AS nombreGondola, pres.desc_presentacion FROM Gondola_Producto AS gp INNER JOIN producto AS p on gp.id_producto = p.id_producto INNER JOIN gondola AS g on gp.id_gondola = g.id_gondola INNER JOIN presentacion AS pres on gp.Presentacion_id_presentacion = pres.id_presentacion
+SELECT gp.id_producto, p.nombre, g.nombre AS nombreGondola, pres.desc_presentacion, g.id_sector FROM Gondola_Producto AS gp 
+INNER JOIN producto AS p on gp.id_producto = p.id_producto INNER JOIN gondola AS g on gp.id_gondola = g.id_gondola 
+INNER JOIN presentacion AS pres on gp.Presentacion_id_presentacion = pres.id_presentacion WHERE g.id_sector = 3
