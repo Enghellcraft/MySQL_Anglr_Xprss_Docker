@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
  selectedSector!: Sector;
  repositores: Repositor[] = [];
  selectedRepositor!: Repositor;
-  
+
  isCheckedSector = false;
  isCheckedRepositor = false;
 
@@ -24,29 +24,9 @@ export class AppComponent implements OnInit {
   private dataService: DataService) {}
 
  ngOnInit() {
-  //  this.getAllProductos().subscribe((data: Producto[]) => {
-  //    this.productos = data;
-  //  });
-  //  this.getSectoresNombre().subscribe((data: Sector[]) => {
-  //    this.sectores = data;
-  //  });
-  //  this.getRepositoresNombre().subscribe((data: Repositor[]) => {
-  //    this.repositores = data;
-  //  });
    this.loadInitialData();
  }
 
-//  getAllProductos() {
-//   return this.http.get<Producto[]>('http://localhost:3000/api/productos');
-//  }
-
-//  getRepositoresNombre() {
-//    return this.http.get<Repositor[]>('http://localhost:3000/api/repositores');
-//  }
-
-//  getSectoresNombre() {
-//    return this.http.get<Sector[]>('http://localhost:3000/api/sectores');
-//  }
 
  mostrarResultados = false
 
@@ -61,7 +41,7 @@ export class AppComponent implements OnInit {
 
 
  loadInitialData() {
-  this.dataService.getProductos().subscribe((data) => {
+   this.dataService.getProductos().subscribe((data) => {
     this.productos = data;
   });
 
@@ -74,13 +54,25 @@ export class AppComponent implements OnInit {
   });
   }
 
-  /* applyFilter() {
+  applyFilter() {
+   //declaro variables para enviar al service
+    let repositorToUpdate
+    let sectorToUpdate
+
+    //si los checkbox estan habilitados las guarda, sino envia undefined por el que no este, en el service se resuelve
+    if(this.isCheckedRepositor)
+      repositorToUpdate = this.selectedRepositor
+
+    if(this.isCheckedSector)
+      sectorToUpdate = this.selectedSector
+
     this.dataService
-      .getProductos(this.selectedRepositor.id_repositor, this.selectedSector.id_sector)
+      .getProductos(repositorToUpdate, sectorToUpdate)
       .subscribe((data) => {
         this.productos = data;
       });
-  } */
+  }
+
   test(valor: any){
     this.selectedSector == valor
     console.log(this.selectedRepositor.id_repositor)
@@ -95,26 +87,6 @@ export class AppComponent implements OnInit {
   setRepositor(value: Repositor){
     console.log(value.id_repositor)
     this.selectedRepositor = value
-  }
-  
-  applyFilter(){
-    if(this.isCheckedRepositor && this.isCheckedSector){
-      this.dataService.getProductosBySectorAndRepositor(this.selectedRepositor.id_repositor, this.selectedSector.id_sector).subscribe((data) => {
-        this.productos = data;
-      });
-    } else if(this.isCheckedRepositor){
-      this.dataService.getProductByRepositorId(this.selectedRepositor.id_repositor).subscribe((data) => {
-        this.productos = data;
-      });
-    } else if(this.isCheckedSector){
-      this.dataService.getProductBySector(this.selectedSector.id_sector).subscribe((data) => {
-        this.productos = data;
-      });
-    } else {
-      this.dataService.getAllProductos().subscribe((data) => {
-        this.productos = data;
-      });
-    }
   }
 
 }

@@ -11,40 +11,27 @@ export class DataService {
 
   constructor(private http: HttpClient) {}
 
-  getProductos(repositorId?: number, sectorId?: number): Observable<Producto[]> {
+  //getProductos puede recibir 2 parametros no obligatorios
+  //si existen se suma a los params al hacer el request
+  //si no existen se envia el request con params vacios osea devolviendo todos los productos
+  getProductos(repositor?: Repositor, sector?: Sector): Observable<Producto[]> {
     let params = new HttpParams();
+
+    if (repositor) {
+      params = params.set('repositorId', repositor.id_repositor.toString());
+    }
+
+    if (sector) {
+      params = params.set('sectorId', sector.id_sector.toString());
+    }
     
-    if (repositorId) {
-      params = params.set('repositorId', repositorId.toString());
-    }
-
-    if (sectorId) {
-      params = params.set('sectorId', sectorId.toString());
-    }
-
-    return this.http.get<Producto[]>(`${this.apiUrl}/productos`, { params });   
+    return this.http.get<Producto[]>(`${this.apiUrl}/productos`, { params });
   }
 
-  getAllProductos() {
-    return this.http.get<Producto[]>(`${this.apiUrl}/productos`)
-   }
-
-  getProductByRepositorId(repositorId: number){
-    return this.http.get<Producto[]>(`${this.apiUrl}/productos/repositor/${repositorId}`)
-  }
-  
-  getProductBySector(sectorId: number){
-    return this.http.get<Producto[]>(`${this.apiUrl}/productos/sector/${sectorId}`)
-  }
-
-  getProductosBySectorAndRepositor(repositorId: number, sectorId: number){
-    return this.http.get<Producto[]>(`${this.apiUrl}/productos/repositor-sector/${repositorId}/${sectorId}`)
-  }
-  
    getRepositores() {
      return this.http.get<Repositor[]>(`${this.apiUrl}/repositores`)
    }
-  
+
    getSectores() {
      return this.http.get<Sector[]>(`${this.apiUrl}/sectores`)
    }
