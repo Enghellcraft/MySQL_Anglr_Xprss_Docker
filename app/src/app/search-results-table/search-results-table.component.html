@@ -15,7 +15,7 @@
         <td>{{ producto.nombreGondola }}</td>
         <td>{{ producto.desc_presentacion }}</td>
       </tr>
-      <tr *ngIf="producto.showDetails">
+      <tr *ngIf="producto.showDetails" class="details-info">
         <td colspan="3"> Fecha de Ingreso: {{ producto.fecha }}</td>
         <td colspan="3"> Cantidad: {{ producto.cantidad }}</td>
       </tr>

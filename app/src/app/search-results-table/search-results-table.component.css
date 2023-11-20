@@ -30,3 +30,8 @@
     cursor: pointer;
   }
   
+  .details-info {
+    font-weight: bold;
+    font-style: italic;
+    color: green;
+   }

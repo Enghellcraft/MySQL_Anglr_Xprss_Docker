@@ -39,23 +39,19 @@ app.get('/api/productos', (req, res) => {
   const { repositorId, sectorId } = req.query;
 
   //se declara la query principal tal como estaba antes que recibe todos los productos
-  // let query = 'SELECT gp.id_producto, p.nombre, g.nombre AS nombreGondola, pres.desc_presentacion '+
-  //  'gpr.fecha, gpr.cantidad FROM Gondola_Producto AS gp INNER JOIN producto AS '+
-  //  'p on gp.id_producto = p.id_producto INNER JOIN gondola AS g on gp.id_gondola = g.id_gondola '+
-  //  'INNER JOIN presentacion AS pres on gp.Presentacion_id_presentacion = pres.id_presentacion ' +
-  //  'INNER JOIN Gondola_Producto_Repositor AS gpr on gp.id_producto = gpr.id_producto '+
-  //  'WHERE gp.id_gondola = gpr.id_gondola '
-  let query = 'SELECT gp.id_producto, p.nombre, g.nombre AS nombreGondola, pres.desc_presentacion, gpr.fecha, gpr.cantidad FROM Gondola_Producto AS gp INNER JOIN producto AS  p on gp.id_producto = p.id_producto INNER JOIN gondola AS g on gp.id_gondola = g.id_gondola INNER JOIN presentacion AS pres on gp.Presentacion_id_presentacion = pres.id_presentacion INNER JOIN Gondola_Producto_Repositor AS gpr on gp.id_producto = gpr.id_producto WHERE gp.id_gondola = gpr.id_gondola AND gp.id_gondola = gpr.id_gondola '
+  let query = 'SELECT gp.id_producto, p.nombre, g.nombre AS nombreGondola, pres.desc_presentacion, gpr.fecha, gpr.cantidad' +
+  ' FROM Gondola_Producto AS gp INNER JOIN producto AS  p on gp.id_producto = p.id_producto' +
+  ' INNER JOIN gondola AS g on gp.id_gondola = g.id_gondola INNER JOIN presentacion AS pres on' + 
+  ' gp.Presentacion_id_presentacion = pres.id_presentacion INNER JOIN Gondola_Producto_Repositor' +
+  ' AS gpr on gp.id_producto = gpr.id_producto WHERE gp.id_gondola = gpr.id_gondola AND gp.id_gondola = gpr.id_gondola'
 
 
   // en caso de que exista repositorId en los params se concatenara al query la siguiente sentencia que
   // filtra por repositor. IMPORTANTE: dejar un espacio para que no concatene seguido
   if (repositorId) 
-    query += `AND gpr.id_repositor = ${repositorId} `;
+    query += ` AND gpr.id_repositor = ${repositorId}`;
   if (sectorId) 
-    query += `AND g.id_sector = ${sectorId}`;
-  
-
+    query += ` AND g.id_sector = ${sectorId}`;
   db.query(query, (err, result) => {
     if (err) {
       console.error('Error en la consulta SQL: ', err);
