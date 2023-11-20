@@ -6,15 +6,15 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
   styleUrls: ['./search-results-table.component.css']
 })
 export class SearchResultsTableComponent implements OnInit, OnChanges {
-  //En este input property se trae la lista de productos desde el app.component principal
-  @Input() productos!: any[]
+
+@Input() productos!: any[]
 
   constructor() { }
 
-  ngOnInit() {
+ngOnInit() {
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+ngOnChanges(changes: SimpleChanges) {
     if (changes['productos']) {
       this.productos = this.productos.map(producto => ({ ...producto, showDetails: false }));
     }

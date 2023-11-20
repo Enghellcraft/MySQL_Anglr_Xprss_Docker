@@ -11,9 +11,7 @@ export class DataService {
 
   constructor(private http: HttpClient) {}
 
-  //getProductos puede recibir 2 parametros no obligatorios
-  //si existen se suma a los params al hacer el request
-  //si no existen se envia el request con params vacios osea devolviendo todos los productos
+  //getProductos puede recibir 2 parametros no obligatorios, responde a ambos o cualquiera, caso contrario devuelve todos
   getProductos(repositor?: Repositor, sector?: Sector): Observable<Producto[]> {
     let params = new HttpParams();
 

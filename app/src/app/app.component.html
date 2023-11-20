@@ -11,7 +11,6 @@
             <option *ngFor="let sector of sectores" [ngValue]="sector">{{sector.desc_sector}}</option>
           </select>
         </td>
-<!--        <span>{{selectedSector}}</span>-->
       </tr>
       <tr>
         <td><input type="checkbox" [(ngModel)]="isCheckedRepositor"></td>
@@ -22,7 +21,6 @@
             <option *ngFor="let repositor of repositores" [ngValue]="repositor">{{repositor.nombre}}</option>
           </select>
         </td>
-<!--        <span>{{selectedRepositor.nombre}}</span>-->
       </tr>
     </table>
     <div class="button-container">

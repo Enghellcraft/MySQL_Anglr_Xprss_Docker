@@ -8,7 +8,6 @@
     </tr>
   </thead>
   <tbody>
-    <!-- ngFor para mostrar los resultados de la busqueda osea los productos en la lista recibida por input-->
     <ng-container *ngFor="let producto of productos">
       <tr (click)="producto.showDetails = !producto.showDetails">
         <td>{{ producto.id_producto }}</td>
@@ -17,13 +16,14 @@
         <td>{{ producto.desc_presentacion }}</td>
       </tr>
       <tr *ngIf="producto.showDetails">
-        <td colspan="3">{{ producto.descripcion }}</td>
+        <td colspan="3"> Fecha de Ingreso: {{ producto.fecha }}</td>
+        <td colspan="3"> Cantidad: {{ producto.cantidad }}</td>
       </tr>
     </ng-container>
   </tbody>
 </table>
 
-<!-- Mensaje si la lista es vacia -->
+<!-- Mensaje para lista es vacia -->
 <div *ngIf="productos.length === 0" class="no-results-message">
   No hay resultados para la búsqueda.
 </div>

@@ -55,11 +55,11 @@ export class AppComponent implements OnInit {
   }
 
   applyFilter() {
-   //declaro variables para enviar al service
+   // variables para enviar al service
     let repositorToUpdate
     let sectorToUpdate
 
-    //si los checkbox estan habilitados las guarda, sino envia undefined por el que no este, en el service se resuelve
+    //si hay checkbox los guarda, sino undefined
     if(this.isCheckedRepositor)
       repositorToUpdate = this.selectedRepositor
 

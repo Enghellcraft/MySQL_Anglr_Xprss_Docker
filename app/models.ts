@@ -32,6 +32,8 @@ export interface Producto {
   descripcion: string;
   id_producto_reemplazo: number;
   Fila_Producto_id_fila: number;
+  fecha: string;
+  cantidad: number;
 }
 
 export interface Presentacion {
