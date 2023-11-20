@@ -1,0 +1,16 @@
+  # Imagen Base oficial node
+  FROM node:18.18.0
+
+  WORKDIR /app
+
+  COPY package*.json ./
+  RUN npm install
+
+  # Copia el contenido a /app
+  COPY . .
+
+  # Puerto de acceso
+  EXPOSE 3000
+
+  # Corre el servidor en el contenedor
+  CMD ["node", "server.js"]
