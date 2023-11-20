@@ -35,3 +35,8 @@
     font-style: italic;
     color: green;
    }
+
+   .sorted-column {
+    color: red;
+    font-weight: bold;
+   }

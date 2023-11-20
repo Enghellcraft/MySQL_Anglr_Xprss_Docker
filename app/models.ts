@@ -27,13 +27,16 @@ export interface Fila_Producto {
 }
 
 export interface Producto {
-  id_producto: number;
+  id_producto: string;
   nombre: string;
   descripcion: string;
   id_producto_reemplazo: number;
   Fila_Producto_id_fila: number;
   fecha: string;
   cantidad: number;
+  showDetails: boolean;
+  nombreGondola: string;
+  desc_presentacion: string;
 }
 
 export interface Presentacion {
