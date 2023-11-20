@@ -33,47 +33,9 @@ export class SearchResultsTableComponent implements OnInit, OnChanges {
           }
         })`)
         this.currentSortedColumn = property
-
     }
-
   }
 
-/* orderBy(param: string){
-  eval(`this.productos = this.productos.sort((a, b) => {
-      // Use square bracket notation to access the property dynamically
-      const aValue = a.${param};
-      const bValue = b.${param};
-  
-      if (typeof aValue === 'number' && typeof bValue === 'number' && this.flagOrder == 0) {
-        // Compare numbers
-        return aValue - bValue;
-      } else if (typeof aValue === 'string' && typeof bValue === 'string' && this.flagOrder == 0) {
-        // Compare strings
-        return aValue.localeCompare(bValue);
-      } else if (typeof aValue === 'number' && typeof bValue === 'number' && this.flagOrder == 1) {
-        // Compare numbers
-        return bValue - aValue;
-      } else if (typeof aValue === 'string' && typeof bValue === 'string' && this.flagOrder == 1) {
-        // Compare strings
-        return bValue.localeCompare(aValue);
-      } else {
-        // Fallback: maintain the current order
-        return 0;
-      }
-    });`)
-    
-    this.flagOrder++
-    if(this.flagOrder == 2){
-      this.flagOrder = 0
-    }
-  } */
-
-// orderBy(param: string) {
-//   console.log(this.productos)
-//   // Assuming param is the property name by which you want to sort
-//   eval(`this.productos = this.productos.sort((a, b) => a.${param} - b.${param})`)
-    
-//   }
 
 ngOnChanges(changes: SimpleChanges) {
     if (changes['productos']) {

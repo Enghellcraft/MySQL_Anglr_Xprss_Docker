@@ -1,11 +1,6 @@
 <table class="search-results-table">
   <thead>
-    <tr>
-      <!-- <th (click)="orderBy('id_producto')">Id Producto</th>
-      <th (click)="orderBy('nombre')">Nombre Producto</th>
-      <th (click)="orderBy('nombreGondola')">Nombre Góndola</th>
-      <th (click)="orderBy('desc_presentacion')">Descripción Presentación</th> -->
-      
+    <tr>      
       <th [class.sorted-column]="currentSortedColumn === 'id_producto'" (click)="orderBy('id_producto')">Id Producto</th>
       <th [class.sorted-column]="currentSortedColumn === 'nombre'" (click)="orderBy('nombre')">Nombre Producto</th>
       <th [class.sorted-column]="currentSortedColumn === 'nombreGondola'" (click)="orderBy('nombreGondola')">Nombre Góndola</th>
