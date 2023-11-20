@@ -49,6 +49,8 @@ app.get('/api/productos', (req, res) => {
     query += ` AND gpr.id_repositor = ${repositorId}`;
   if (sectorId) 
     query += ` AND g.id_sector = ${sectorId}`;
+
+  query += ' ORDER BY gp.id_producto ASC'
   
   db.query(query, (err, result) => {
     if (err) {

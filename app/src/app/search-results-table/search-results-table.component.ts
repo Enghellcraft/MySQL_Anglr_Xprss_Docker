@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterViewInit } from '@angular/core';
 import { Producto } from 'models';
 
 @Component({
@@ -9,16 +9,16 @@ import { Producto } from 'models';
 export class SearchResultsTableComponent implements OnInit, OnChanges {
 
 
-@Input() productos!: Producto[]
+  @Input() productos!: Producto[]
 
   flagOrder = 0
   currentSortedColumn!: string
   constructor() { }
 
   ngOnInit() { }
-
+  
   orderBy(property: string) {
-    console.log(this.currentSortedColumn)
+    // console.log(this.currentSortedColumn)
     if (this.currentSortedColumn == property){
       this.productos = this.productos.reverse()
     }
@@ -37,10 +37,9 @@ export class SearchResultsTableComponent implements OnInit, OnChanges {
   }
 
 
-ngOnChanges(changes: SimpleChanges) {
-    if (changes['productos']) {
-      this.productos = this.productos.map(producto => ({ ...producto, showDetails: false }));
+  ngOnChanges(changes: SimpleChanges) {
+      if (changes['productos']) {
+        this.productos = this.productos.map(producto => ({ ...producto, showDetails: false }));
+      }
     }
   }
-
-}

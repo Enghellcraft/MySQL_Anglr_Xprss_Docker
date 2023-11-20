@@ -41,10 +41,6 @@ export class AppComponent implements OnInit {
 
 
  loadInitialData() {
-   this.dataService.getProductos().subscribe((data) => {
-    this.productos = data;
-  });
-
   this.dataService.getSectores().subscribe((data) => {
     this.sectores = data;
   });
@@ -73,21 +69,17 @@ export class AppComponent implements OnInit {
       });
   }
 
-  test(valor: any){
-    this.selectedSector == valor
-    console.log(this.selectedRepositor.id_repositor)
-    console.log(this.selectedSector.id_sector)
+  setTodosSector(){
+    if(this.isCheckedSector){
+      this.selectedSector = undefined!
+    }
   }
 
-  test2(){
-    console.log(this.selectedRepositor.id_repositor)
-    console.log(this.selectedSector.id_sector)
-  }
+  setTodosRepositor(){
+    if(this.isCheckedRepositor){
+      this.selectedRepositor = undefined!
+    }
 
-  setRepositor(value: Repositor){
-    console.log(value.id_repositor)
-    this.selectedRepositor = value
   }
 
 }
-

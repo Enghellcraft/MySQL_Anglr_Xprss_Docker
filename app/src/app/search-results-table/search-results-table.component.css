@@ -3,7 +3,7 @@
     font-size: 1rem;
     border-radius: 10px;
   }
-  
+
   .search-results-table th, .search-results-table td {
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -24,6 +24,11 @@
     color: rgb(4, 61, 4);
   }
 
+  tr > .sorted-column {
+    color: rgb(249, 85, 85);
+    font-weight: bold;
+   }
+
   .search-results-table tr:hover {
     background-color: rgba(135, 184, 135, 0.5); 
     transition: background-color 0.3s ease; 
@@ -36,7 +41,3 @@
     color: green;
    }
 
-   .sorted-column {
-    color: red;
-    font-weight: bold;
-   }

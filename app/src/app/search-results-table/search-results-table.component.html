@@ -1,12 +1,14 @@
 <table class="search-results-table">
   <thead>
     <tr>      
-      <th [class.sorted-column]="currentSortedColumn === 'id_producto'" (click)="orderBy('id_producto')">Id Producto</th>
-      <th [class.sorted-column]="currentSortedColumn === 'nombre'" (click)="orderBy('nombre')">Nombre Producto</th>
-      <th [class.sorted-column]="currentSortedColumn === 'nombreGondola'" (click)="orderBy('nombreGondola')">Nombre Góndola</th>
-      <th [class.sorted-column]="currentSortedColumn === 'desc_presentacion'" (click)="orderBy('desc_presentacion')">Descripción Presentación</th>
+      <th [ngClass]="{'sorted-column': currentSortedColumn == 'id_producto'}" (click)="orderBy('id_producto')">Id Producto</th>
+      <th [ngClass]="{'sorted-column': currentSortedColumn == 'nombre'}" (click)="orderBy('nombre')">Nombre Producto</th>
+      <th [ngClass]="{'sorted-column': currentSortedColumn == 'nombreGondola'}" (click)="orderBy('nombreGondola')">Nombre Góndola</th>
+      <th [ngClass]="{'sorted-column': currentSortedColumn == 'desc_presentacion'}" (click)="orderBy('desc_presentacion')">Descripción Presentación</th>
     </tr>
   </thead>
+
+  <!-- <td [ngClass]="val > 10 ? 'red' : 'green'">{{ val }}</td> -->
   <tbody>
     <ng-container *ngFor="let producto of productos">
       <tr (click)="producto.showDetails = !producto.showDetails">
