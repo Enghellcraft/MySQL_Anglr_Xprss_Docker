@@ -26,10 +26,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Empresa` (
 ENGINE = InnoDB;
 
 INSERT INTO `Empresa` (`id_empresa`, `razon_social`, `domicilio`) VALUES
-(1, 'Productos Alimenticios S.A.', 'Calle Principal 123'),
-(2, 'Bebidas Refrescantes Inc.', 'Avenida Central 456'),
+(1, 'Supermercado XYZ', 'Avenida Principal 123'),
+(2, 'Bebidas Refrescantes Inc.', 'Calle Central 456'),
 (3, 'Distribución de Lácteos S.L.', 'Calle de los Lácteos 789'),
-(4, 'Snacks Saludables Ltda.', 'Avenida de los Snacks 101');
+(4, 'Snacks Saludables Ltda.', 'Avenida de los Snacks 101'),
+(5, 'Frutas y Verduras S.A.', 'Calle de las Frutas 567'),
+(6, 'Carnicería El Gaucho', 'Ruta 8 Km 90'),
+(7, 'Panadería La Espiga', 'Avenida del Pan 234'),
+(8, 'Electrohogar Express', 'Esquina Tecnológica 789'),
+(9, 'Librería Papel y Tinta', 'Libros 101'),
+(10, 'Tienda de Ropa Elegante', 'Moda 202');
 
 
 -- -----------------------------------------------------
@@ -50,11 +56,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Repositor` (
 ENGINE = InnoDB;
 
 INSERT INTO `Repositor` (`id_repositor`, `nombre`, `id_empresa`) VALUES
-(1, 'Denise Mabel Martin', 1),
-(2, 'Juan Segundo Texeira Pasquali', 2),
-(3, 'Franco Polesel', 1),
-(4, 'Lucas Cejas', 3),
-(5, 'Alejandro Daniel Nava', 3);
+(1, 'Laura Fernández', 1),
+(2, 'Juan Pérez', 2),
+(3, 'María Rodríguez', 1),
+(4, 'Carlos Gómez', 3),
+(5, 'Alejandra Nava', 3),
+(6, 'Martín López', 4),
+(7, 'Lucía Ramírez', 2),
+(8, 'Pedro González', 1),
+(9, 'Ana Martínez', 4),
+(10, 'Javier Suárez', 5),
+(11, 'Verónica Castro', 6),
+(12, 'Diego Velázquez', 7),
+(13, 'Silvia Medina', 8),
+(14, 'Raúl Torres', 9),
+(15, 'Cecilia Duarte', 10);
 -- -----------------------------------------------------
 -- Table `mydb`.`Sector`
 -- -----------------------------------------------------
@@ -66,10 +82,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Sector` (
 ENGINE = InnoDB;
 
 INSERT INTO `Sector` (`id_sector`, `desc_sector`) VALUES
-(1, 'Gaseosas'),
+(1, 'Bebidas'),
 (2, 'Snacks'),
 (3, 'Pastas'),
-(4, 'Lácteos');
+(4, 'Lácteos'),
+(5, 'Frutas y Verduras'),
+(6, 'Carnicería'),
+(7, 'Panadería'),
+(8, 'Electrodomésticos'),
+(9, 'Libros'),
+(10, 'Ropa');
 -- -----------------------------------------------------
 -- Table `mydb`.`Gondola`
 -- -----------------------------------------------------
@@ -88,10 +110,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Gondola` (
 ENGINE = InnoDB;
 
 INSERT INTO `Gondola` (`id_gondola`, `nombre`, `id_sector`) VALUES
-(1, 'Góndola 1', 1),
-(2, 'Góndola 2', 2),
-(3, 'Góndola 3', 1),
-(4, 'Góndola 4', 3);
+(1, 'Bebidas 1', 1),
+(2, 'Snacks 1', 2),
+(3, 'Pastas 1', 3),
+(4, 'Lácteos 1', 4),
+(5, 'Frutas y Verduras 1', 5),
+(6, 'Carnicería 1', 6),
+(7, 'Panadería 1', 7),
+(8, 'Electrodomésticos 1', 8),
+(9, 'Libros 1', 9),
+(10, 'Ropa 1', 10);
 -- -----------------------------------------------------
 -- Table `mydb`.`Flia_Producto`
 -- -----------------------------------------------------
@@ -103,10 +131,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Flia_Producto` (
 ENGINE = InnoDB;
 
 INSERT INTO `Flia_Producto` (`id_fila`, `nombre`) VALUES
-(1, 'Familia de Productos 1'),
-(2, 'Familia de Productos 2'),
-(3, 'Familia de Productos 3'),
-(4, 'Familia de Productos 4');
+(1, 'Bebidas Variadas'),
+(2, 'Snacks Salados'),
+(3, 'Pastas Secas'),
+(4, 'Productos Lácteos'),
+(5, 'Frutas Frescas'),
+(6, 'Cortes de Carne'),
+(7, 'Panadería Artesanal'),
+(8, 'Electrodomésticos'),
+(9, 'Libros Variados'),
+(10, 'Ropa Elegante');
 -- -----------------------------------------------------
 -- Table `mydb`.`Producto`
 -- -----------------------------------------------------
@@ -127,10 +161,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Producto` (
 ENGINE = InnoDB;
 
 INSERT INTO `Producto` (`id_producto`, `nombre`, `descripcion`, `id_producto_reemplazo`, `Flia_Producto_id_fila`) VALUES
-(1, 'Producto 1', 'Descripción del Producto 1', 4, 1),
-(2, 'Producto 2', 'Descripción del Producto 2', 3, 2),
-(3, 'Producto 3', 'Descripción del Producto 3', 1, 3),
-(4, 'Producto 4', 'Descripción del Producto 4', 2, 4);
+(1, 'Gaseosa Cola', 'Gaseosa cola de 2 litros', NULL, 1),
+(2, 'Papas Fritas', 'Papas fritas sabor original', NULL, 2),
+(3, 'Fideos Spaghetti', 'Fideos spaghetti de 500g', NULL, 3),
+(4, 'Leche Entera', 'Leche entera en envase de 1 litro', NULL, 4),
+(5, 'Manzanas', 'Manzanas rojas frescas', NULL, 5),
+(6, 'Asado de Tira', 'Corte de carne vacuna, kg', NULL, 6),
+(7, 'Pan Integral', 'Pan integral artesanal', NULL, 7),
+(8, 'Licuadora', 'Licuadora eléctrica, 800W', NULL, 8),
+(9, 'Novela Romántica', 'Libro de romance contemporáneo', NULL, 9),
+(10, 'Vestido Elegante', 'Vestido de noche para ocasiones especiales', NULL, 10),
+(11, 'Agua Mineral', 'Agua mineral sin gas, 1.5L', NULL, 1),
+(12, 'Tortilla Chips', 'Snack de tortilla chips, 200g', NULL, 2),
+(13, 'Penne Rigate', 'Pasta penne rigate, 1kg', NULL, 3),
+(14, 'Yogur Natural', 'Yogur natural sin azúcar, 500g', NULL, 4),
+(15, 'Naranjas', 'Naranjas frescas de Valencia', NULL, 5);
 -- -----------------------------------------------------
 -- Table `mydb`.`Presentacion`
 -- -----------------------------------------------------
@@ -142,10 +187,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Presentacion` (
 ENGINE = InnoDB;
 
 INSERT INTO `Presentacion` (`id_presentacion`, `desc_presentacion`) VALUES
-(1, 'Presentación 1'),
-(2, 'Presentación 2'),
-(3, 'Presentación 3'),
-(4, 'Presentación 4');
+(1, 'Botella 2L'),
+(2, 'Bolsa 150g'),
+(3, 'Paquete 500g'),
+(4, 'Tetra Pak 1L'),
+(5, 'Unidad'),
+(6, 'Kilogramo'),
+(7, 'Unidad'),
+(8, 'Unidad'),
+(9, 'Unidad'),
+(10, 'Unidad');
 -- -----------------------------------------------------
 -- Table `mydb`.`Gondola_Producto`
 -- -----------------------------------------------------
@@ -178,7 +229,18 @@ INSERT INTO `Gondola_Producto` (`id_producto`, `id_gondola`, `Presentacion_id_pr
 (1, 1, 1),
 (2, 2, 2),
 (3, 3, 3),
-(4, 4, 4);
+(4, 4, 4),
+(5, 5, 5),
+(6, 6, 6),
+(7, 7, 7),
+(8, 8, 8),
+(9, 9, 9),
+(10, 10, 10),
+(11, 1, 1),
+(12, 2, 2),
+(13, 3, 3),
+(14, 4, 4),
+(15, 5, 5);
 -- -----------------------------------------------------
 -- Table `mydb`.`Gondola_Producto_Repositor`
 -- -----------------------------------------------------
@@ -204,15 +266,22 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Gondola_Producto_Repositor` (
 ENGINE = InnoDB;
 
 INSERT INTO `Gondola_Producto_Repositor` (`id_producto`, `id_gondola`, `id_repositor`, `fecha`, `cantidad`) VALUES
-(1, 1, 1, '2023-11-01', 1),
-(2, 2, 2, '2023-11-02', 2),
-(3, 3, 3, '2023-11-03', 3),
-(4, 4, 4, '2023-11-04', 4);
+(1, 1, 1, '2023-11-01', 5),
+(2, 2, 2, '2023-11-02', 8),
+(3, 3, 3, '2023-11-03', 10),
+(4, 4, 4, '2023-11-04', 12),
+(5, 5, 5, '2023-11-05', 15),
+(6, 6, 6, '2023-11-06', 7),
+(7, 7, 7, '2023-11-07', 20),
+(8, 8, 8, '2023-11-08', 3),
+(9, 9, 9, '2023-11-09', 6),
+(10, 10, 10, '2023-11-10', 10),
+(11, 1, 1, '2023-11-01', 3),
+(12, 2, 2, '2023-11-02', 6),
+(13, 3, 3, '2023-11-03', 9),
+(14, 4, 4, '2023-11-04', 12),
+(15, 5, 5, '2023-11-05', 5);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
-SELECT gp.id_producto, p.nombre, g.nombre AS nombreGondola, pres.desc_presentacion, g.id_sector FROM Gondola_Producto AS gp 
-INNER JOIN producto AS p on gp.id_producto = p.id_producto INNER JOIN gondola AS g on gp.id_gondola = g.id_gondola 
-INNER JOIN presentacion AS pres on gp.Presentacion_id_presentacion = pres.id_presentacion WHERE g.id_sector = 3

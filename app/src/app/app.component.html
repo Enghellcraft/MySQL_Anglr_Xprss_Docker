@@ -7,7 +7,7 @@
         <td class="text">Sector:</td>
         <td>
           <select [(ngModel)]="selectedSector">
-            <!-- <option value="">Todos</option> -->
+            <option [ngValue]="undefined">Todos</option>
             <option *ngFor="let sector of sectores" [ngValue]="sector">{{sector.desc_sector}}</option>
           </select>
         </td>
@@ -17,7 +17,7 @@
         <td class="text">Repositor:</td>
         <td>
           <select [(ngModel)]="selectedRepositor">
-            <!-- <option value="" *ngIf="!isCheckedRepositor" selected>Todos</option> -->
+            <option [ngValue]="undefined">Todos</option>
             <option *ngFor="let repositor of repositores" [ngValue]="repositor">{{repositor.nombre}}</option>
           </select>
         </td>
