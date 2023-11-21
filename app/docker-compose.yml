@@ -1,23 +1,37 @@
 version: '3'
 services:
  express-server:
-  build:
-    context: ./
-    dockerfile: Dockerfile.express
-  ports:
-    - '3000:3000'
+   build:
+     context: ./
+     dockerfile: Dockerfile.express
+   ports:
+     - '3000:3000'
+   depends_on:
+     mysql-db:
+       condition: service_healthy
+   environment:
+     DB_USER: 'root'
+     DB_PASS: 'P4ssw0rt34_*'
+     DB_NAME: 'db_grupo9'
+     MYSQL_DATABASE: 'db_grupo9'
  angular-app:
-  build:
-    context: ./
-    dockerfile: Dockerfile.angular
-  ports:
-    - '80:80'
+   build:
+     context: ./
+     dockerfile: Dockerfile.angular
+   ports:
+     - '80:80'
+   depends_on:
+     - mysql-db
  mysql-db:
-  build: 
-    context: ./
-    dockerfile: Dockerfile.mysql
-  ports:
-    - '3306:3306'
-  environment:
-    MYSQL_ROOT_PASSWORD: ${DB_PASS}
-    MYSQL_DATABASE: ${MYSQL_DATABASE}
+   build: 
+     context: ./
+     dockerfile: Dockerfile.mysql
+   environment:
+     MYSQL_ROOT_PASSWORD: 'P4ssw0rt34_*'
+     MYSQL_DATABASE: 'db_grupo9'
+   healthcheck:
+     test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+     timeout: 20s
+     retries: 10
+
+

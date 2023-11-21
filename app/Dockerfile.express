@@ -14,3 +14,6 @@
 
   # Corre el servidor en el contenedor
   CMD ["node", "server.js"]
+
+
+  

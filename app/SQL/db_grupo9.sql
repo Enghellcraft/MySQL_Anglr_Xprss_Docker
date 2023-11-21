@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Empresa` (
   `razon_social` VARCHAR(45) NULL,
   `domicilio` VARCHAR(45) NULL,
   PRIMARY KEY (`id_empresa`),
-  UNIQUE INDEX `id_repositor_UNIQUE` (`id_empresa` ASC) VISIBLE)
+  UNIQUE INDEX `id_repositor_UNIQUE` (`id_empresa` ASC))
 ENGINE = InnoDB;
 
 INSERT INTO `Empresa` (`id_empresa`, `razon_social`, `domicilio`) VALUES
@@ -46,8 +46,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Repositor` (
   `nombre` VARCHAR(45) NULL,
   `id_empresa` INT NOT NULL,
   PRIMARY KEY (`id_repositor`),
-  UNIQUE INDEX `id_repositor_UNIQUE` (`id_repositor` ASC) VISIBLE,
-  INDEX `fk_Repositor_Empresa1_idx` (`id_empresa` ASC) VISIBLE,
+  UNIQUE INDEX `id_repositor_UNIQUE` (`id_repositor` ASC),
+  INDEX `fk_Repositor_Empresa1_idx` (`id_empresa` ASC),
   CONSTRAINT `id_empresa`
     FOREIGN KEY (`id_empresa`)
     REFERENCES `mydb`.`Empresa` (`id_empresa`)
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Sector` (
   `id_sector` INT NOT NULL,
   `desc_sector` VARCHAR(45) NULL,
   PRIMARY KEY (`id_sector`),
-  UNIQUE INDEX `id_gondola_UNIQUE` (`id_sector` ASC) VISIBLE)
+  UNIQUE INDEX `id_gondola_UNIQUE` (`id_sector` ASC))
 ENGINE = InnoDB;
 
 INSERT INTO `Sector` (`id_sector`, `desc_sector`) VALUES
@@ -100,8 +100,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Gondola` (
   `nombre` VARCHAR(45) NULL,
   `id_sector` INT NOT NULL,
   PRIMARY KEY (`id_gondola`),
-  UNIQUE INDEX `id_gondola_UNIQUE` (`id_gondola` ASC) VISIBLE,
-  INDEX `fk_Gondola_Sector1_idx` (`id_sector` ASC) VISIBLE,
+  UNIQUE INDEX `id_gondola_UNIQUE` (`id_gondola` ASC),
+  INDEX `fk_Gondola_Sector1_idx` (`id_sector` ASC),
   CONSTRAINT `id_sector`
     FOREIGN KEY (`id_sector`)
     REFERENCES `mydb`.`Sector` (`id_sector`)
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Flia_Producto` (
   `id_fila` INT NOT NULL,
   `nombre` VARCHAR(45) NULL,
   PRIMARY KEY (`id_fila`),
-  UNIQUE INDEX `id_producto_UNIQUE` (`id_fila` ASC) VISIBLE)
+  UNIQUE INDEX `id_producto_UNIQUE` (`id_fila` ASC))
 ENGINE = InnoDB;
 
 INSERT INTO `Flia_Producto` (`id_fila`, `nombre`) VALUES
@@ -151,8 +151,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Producto` (
   `id_producto_reemplazo` INT NULL,
   `Flia_Producto_id_fila` INT NOT NULL,
   PRIMARY KEY (`id_producto`),
-  UNIQUE INDEX `id_producto_UNIQUE` (`id_producto` ASC) VISIBLE,
-  INDEX `fk_Producto_Flia_Producto1_idx` (`Flia_Producto_id_fila` ASC) VISIBLE,
+  UNIQUE INDEX `id_producto_UNIQUE` (`id_producto` ASC),
+  INDEX `fk_Producto_Flia_Producto1_idx` (`Flia_Producto_id_fila` ASC),
   CONSTRAINT `id_fila`
     FOREIGN KEY (`Flia_Producto_id_fila`)
     REFERENCES `mydb`.`Flia_Producto` (`id_fila`)
@@ -183,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Presentacion` (
   `id_presentacion` INT NOT NULL,
   `desc_presentacion` VARCHAR(45) NULL,
   PRIMARY KEY (`id_presentacion`),
-  UNIQUE INDEX `id_presentacion_UNIQUE` (`id_presentacion` ASC) VISIBLE)
+  UNIQUE INDEX `id_presentacion_UNIQUE` (`id_presentacion` ASC))
 ENGINE = InnoDB;
 
 INSERT INTO `Presentacion` (`id_presentacion`, `desc_presentacion`) VALUES
@@ -205,9 +205,9 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Gondola_Producto` (
   `id_gondola` INT NOT NULL,
   `Presentacion_id_presentacion` INT NOT NULL,
   PRIMARY KEY (`id_producto`, `id_gondola`),
-  INDEX `fk_Gondola_has_Producto_Producto1_idx` (`id_producto` ASC) VISIBLE,
-  INDEX `fk_Gondola_has_Producto_Gondola1_idx` (`id_gondola` ASC) VISIBLE,
-  INDEX `fk_Gondola_Producto_Presentacion1_idx` (`Presentacion_id_presentacion` ASC) VISIBLE,
+  INDEX `fk_Gondola_has_Producto_Producto1_idx` (`id_producto` ASC),
+  INDEX `fk_Gondola_has_Producto_Gondola1_idx` (`id_gondola` ASC),
+  INDEX `fk_Gondola_Producto_Presentacion1_idx` (`Presentacion_id_presentacion` ASC),
   CONSTRAINT `id_gondola`
     FOREIGN KEY (`id_gondola`)
     REFERENCES `mydb`.`Gondola` (`id_gondola`)
@@ -251,8 +251,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Gondola_Producto_Repositor` (
   `fecha` VARCHAR(45) NULL,
   `cantidad` INT NULL,
   PRIMARY KEY (`id_producto`, `id_gondola`),
-  INDEX `fk_Gondola_Producto_has_Repositor_Repositor1_idx` (`id_repositor` ASC) VISIBLE,
-  INDEX `fk_Gondola_Producto_has_Repositor_Gondola_Producto1_idx` (`id_producto` ASC, `id_gondola` ASC) VISIBLE,
+  INDEX `fk_Gondola_Producto_has_Repositor_Repositor1_idx` (`id_repositor` ASC),
+  INDEX `fk_Gondola_Producto_has_Repositor_Gondola_Producto1_idx` (`id_producto` ASC, `id_gondola` ASC),
   CONSTRAINT `id_gondola_producto`
     FOREIGN KEY (`id_producto` , `id_gondola`)
     REFERENCES `mydb`.`Gondola_Producto` (`id_producto` , `id_gondola`)

@@ -5,13 +5,21 @@
 
 // EXPRESS
 let express = require('express');
-let mysql = require('mysql');
 let app = express();
+
+// MYSQL
+let mysql = require('mysql');
+var connection = mysql.createConnection({
+ host : 'mysql-db',
+ user : process.env.DB_USER,
+ password : process.env.DB_PASS, 
+ database : process.env.MYSQL_DATABASE
+})
 
 // CORS
 const cors = require('cors');
 var corsOptions = {
-  origin: 'http://localhost:4200', // solo permite este origen
+  origin: 'http://localhost:80', // solo permite este origen
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // metodos permitidos
   optionsSuccessStatus: 200 // status
  }
@@ -20,17 +28,18 @@ app.use(cors(corsOptions));
 // DOTENV
 require('dotenv').config({ debug: true });
 let db = mysql.createConnection({
-  host: 'localhost',
+  host: 'mysql-db',
   user: process.env.DB_USER, // importante crear el usuario y dar privilegios para acceder a mydb
   password: process.env.DB_PASS, // y colocar esta password
-  database: 'mydb'
+  database: process.env.DB_NAME
 });
 
-db.connect((err) => {
+db.connect(function(err) {
   if (err) {
+    console.error('Error conectando a MySQL: ' + err.stack)
     throw err;
   }
-  console.log('Conectado al Database');
+  console.log('Conectado a MYSQL con id' + connection.threadId);
 });
 
 app.get('/api/productos', (req, res) => {

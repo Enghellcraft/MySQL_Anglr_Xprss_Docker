@@ -2,8 +2,10 @@ FROM mysql:5.7
 ENV MYSQL_ROOT_PASSWORD=${DB_PASS}
 ENV MYSQL_DATABASE=${DB_NAME}
 
-# Copy the SQL file into the Docker image
+# Copiael archivo SQL en la Docker image
 COPY ./SQL/db_grupo9.sql /docker-entrypoint-initdb.d/
 
-# Run the SQL file when the container is run
+# Run del SQL file cuando corre el container
 RUN ["chmod", "+x", "/docker-entrypoint-initdb.d/db_grupo9.sql"]
+
+
