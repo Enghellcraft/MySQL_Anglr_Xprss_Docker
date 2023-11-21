@@ -19,8 +19,8 @@ USE `mydb` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Empresa` (
   `id_empresa` INT NOT NULL,
-  `razon_social` VARCHAR(45) NULL,
-  `domicilio` VARCHAR(45) NULL,
+  `razon_social` VARCHAR(45) NOT NULL,
+  `domicilio` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_empresa`),
   UNIQUE INDEX `id_repositor_UNIQUE` (`id_empresa` ASC))
 ENGINE = InnoDB;
@@ -43,7 +43,7 @@ INSERT INTO `Empresa` (`id_empresa`, `razon_social`, `domicilio`) VALUES
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Repositor` (
   `id_repositor` INT NOT NULL,
-  `nombre` VARCHAR(45) NULL,
+  `nombre` VARCHAR(45) NOT NULL,
   `id_empresa` INT NOT NULL,
   PRIMARY KEY (`id_repositor`),
   UNIQUE INDEX `id_repositor_UNIQUE` (`id_repositor` ASC),
@@ -76,7 +76,7 @@ INSERT INTO `Repositor` (`id_repositor`, `nombre`, `id_empresa`) VALUES
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Sector` (
   `id_sector` INT NOT NULL,
-  `desc_sector` VARCHAR(45) NULL,
+  `desc_sector` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_sector`),
   UNIQUE INDEX `id_gondola_UNIQUE` (`id_sector` ASC))
 ENGINE = InnoDB;
@@ -125,7 +125,7 @@ INSERT INTO `Gondola` (`id_gondola`, `nombre`, `id_sector`) VALUES
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Flia_Producto` (
   `id_fila` INT NOT NULL,
-  `nombre` VARCHAR(45) NULL,
+  `nombre` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_fila`),
   UNIQUE INDEX `id_producto_UNIQUE` (`id_fila` ASC))
 ENGINE = InnoDB;
@@ -146,9 +146,9 @@ INSERT INTO `Flia_Producto` (`id_fila`, `nombre`) VALUES
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Producto` (
   `id_producto` INT NOT NULL,
-  `nombre` VARCHAR(45) NULL,
-  `descripcion` VARCHAR(45) NULL,
-  `id_producto_reemplazo` INT NULL,
+  `nombre` VARCHAR(45) NOT NULL,
+  `descripcion` VARCHAR(45) NOT NULL,
+  `id_producto_reemplazo` INT NOT NULL,
   `Flia_Producto_id_fila` INT NOT NULL,
   PRIMARY KEY (`id_producto`),
   UNIQUE INDEX `id_producto_UNIQUE` (`id_producto` ASC),
@@ -161,27 +161,27 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Producto` (
 ENGINE = InnoDB;
 
 INSERT INTO `Producto` (`id_producto`, `nombre`, `descripcion`, `id_producto_reemplazo`, `Flia_Producto_id_fila`) VALUES
-(1, 'Gaseosa Cola', 'Gaseosa cola de 2 litros', NULL, 1),
-(2, 'Papas Fritas', 'Papas fritas sabor original', NULL, 2),
-(3, 'Fideos Spaghetti', 'Fideos spaghetti de 500g', NULL, 3),
-(4, 'Leche Entera', 'Leche entera en envase de 1 litro', NULL, 4),
-(5, 'Manzanas', 'Manzanas rojas frescas', NULL, 5),
-(6, 'Asado de Tira', 'Corte de carne vacuna, kg', NULL, 6),
-(7, 'Pan Integral', 'Pan integral artesanal', NULL, 7),
-(8, 'Licuadora', 'Licuadora eléctrica, 800W', NULL, 8),
-(9, 'Novela Romántica', 'Libro de romance contemporáneo', NULL, 9),
-(10, 'Vestido Elegante', 'Vestido de noche para ocasiones especiales', NULL, 10),
-(11, 'Agua Mineral', 'Agua mineral sin gas, 1.5L', NULL, 1),
-(12, 'Tortilla Chips', 'Snack de tortilla chips, 200g', NULL, 2),
-(13, 'Penne Rigate', 'Pasta penne rigate, 1kg', NULL, 3),
-(14, 'Yogur Natural', 'Yogur natural sin azúcar, 500g', NULL, 4),
-(15, 'Naranjas', 'Naranjas frescas de Valencia', NULL, 5);
+(1, 'Gaseosa Cola', 'Gaseosa cola de 2 litros', 1, 1),
+(2, 'Papas Fritas', 'Papas fritas sabor original', 2, 2),
+(3, 'Fideos Spaghetti', 'Fideos spaghetti de 500g', 2, 3),
+(4, 'Leche Entera', 'Leche entera en envase de 1 litro', 2, 4),
+(5, 'Manzanas', 'Manzanas rojas frescas', 1, 5),
+(6, 'Asado de Tira', 'Corte de carne vacuna, kg', 3, 6),
+(7, 'Pan Integral', 'Pan integral artesanal', 3, 7),
+(8, 'Licuadora', 'Licuadora eléctrica, 800W', 3, 8),
+(9, 'Novela Romántica', 'Libro de romance contemporáneo', 3, 9),
+(10, 'Vestido Elegante', 'Vestido de noche para ocasiones especiales', 3, 10),
+(11, 'Agua Mineral', 'Agua mineral sin gas, 1.5L', 1, 1),
+(12, 'Tortilla Chips', 'Snack de tortilla chips, 200g', 1, 2),
+(13, 'Penne Rigate', 'Pasta penne rigate, 1kg', 1, 3),
+(14, 'Yogur Natural', 'Yogur natural sin azúcar, 500g', 1, 4),
+(15, 'Naranjas', 'Naranjas frescas de Valencia', 1, 5);
 -- -----------------------------------------------------
 -- Table `mydb`.`Presentacion`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Presentacion` (
   `id_presentacion` INT NOT NULL,
-  `desc_presentacion` VARCHAR(45) NULL,
+  `desc_presentacion` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_presentacion`),
   UNIQUE INDEX `id_presentacion_UNIQUE` (`id_presentacion` ASC))
 ENGINE = InnoDB;
@@ -248,8 +248,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Gondola_Producto_Repositor` (
   `id_producto` INT NOT NULL,
   `id_gondola` INT NOT NULL,
   `id_repositor` INT NOT NULL,
-  `fecha` VARCHAR(45) NULL,
-  `cantidad` INT NULL,
+  `fecha` VARCHAR(45) NOT NULL,
+  `cantidad` INT NOT NULL,
   PRIMARY KEY (`id_producto`, `id_gondola`),
   INDEX `fk_Gondola_Producto_has_Repositor_Repositor1_idx` (`id_repositor` ASC),
   INDEX `fk_Gondola_Producto_has_Repositor_Gondola_Producto1_idx` (`id_producto` ASC, `id_gondola` ASC),

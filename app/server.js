@@ -19,7 +19,7 @@ var connection = mysql.createConnection({
 // CORS
 const cors = require('cors');
 var corsOptions = {
-  origin: 'http://localhost:80', // solo permite este origen
+  origin: '*', // solo permite este origen
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // metodos permitidos
   optionsSuccessStatus: 200 // status
  }

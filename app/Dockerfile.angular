@@ -1,18 +1,20 @@
-  # Crea la Angular app
-  FROM node:18.18.0 AS build
+# Crea la Angular app
+ARG NODE_VERSION=18.18.0
 
-  WORKDIR /app
+FROM node:${NODE_VERSION}-alpine as build
 
-  COPY package*.json ./
-  RUN npm install
-  COPY . .
+WORKDIR /app
 
-  RUN npm run build
+COPY . .
 
-  # Serve de la application
-  FROM nginx:1.17.1-alpine
-  COPY --from=build /app/dist /usr/share/nginx/html
-  EXPOSE 80
-  CMD ["nginx", "-g", "daemon off;"]
+# Dependencies Install
+RUN yarn --frozen-lockfile
+
+RUN yarn build
+
+# Serve de la application
+EXPOSE 4200
+
+CMD ["yarn", "start"]
 
   

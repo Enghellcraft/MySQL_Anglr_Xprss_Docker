@@ -1,6 +1,6 @@
 FROM mysql:5.7
-ENV MYSQL_ROOT_PASSWORD=${DB_PASS}
-ENV MYSQL_DATABASE=${DB_NAME}
+ENV MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_DATABASE=P4ssw0rt34_*
 
 # Copiael archivo SQL en la Docker image
 COPY ./SQL/db_grupo9.sql /docker-entrypoint-initdb.d/
