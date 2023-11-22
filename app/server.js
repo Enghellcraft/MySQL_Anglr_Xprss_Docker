@@ -33,7 +33,7 @@ db.connect(function(err) {
     console.error('Error conectando a MySQL: ' + err.stack)
     throw err;
   }
-  console.log('Conectado a MYSQL con id' + connection.threadId);
+  console.log('Conectado a MYSQL con id' + db.threadId);
 });
 
 app.get('/api/productos', (req, res) => {
@@ -42,8 +42,8 @@ app.get('/api/productos', (req, res) => {
 
   // se declara la query principal que recibe todos los productos
   let query = 'SELECT gp.id_producto, p.nombre, g.nombre AS nombreGondola, pres.desc_presentacion, gpr.fecha, gpr.cantidad' +
-  ' FROM Gondola_Producto AS gp INNER JOIN producto AS  p on gp.id_producto = p.id_producto' +
-  ' INNER JOIN gondola AS g on gp.id_gondola = g.id_gondola INNER JOIN presentacion AS pres on' + 
+  ' FROM Gondola_Producto AS gp INNER JOIN Producto AS p on gp.id_producto = p.id_producto' +
+  ' INNER JOIN Gondola AS g on gp.id_gondola = g.id_gondola INNER JOIN Presentacion AS pres on' + 
   ' gp.Presentacion_id_presentacion = pres.id_presentacion INNER JOIN Gondola_Producto_Repositor' +
   ' AS gpr on gp.id_producto = gpr.id_producto WHERE gp.id_gondola = gpr.id_gondola AND gp.id_gondola = gpr.id_gondola'
 
