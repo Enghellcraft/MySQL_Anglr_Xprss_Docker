@@ -21,7 +21,7 @@ app.use(cors(corsOptions));
 require('dotenv').config({ debug: true });
 let db = mysql.createConnection({
   host: 'localhost',
-  user: process.env.DB_USER, // importante crear el usuario y dar privilegios para acceder a mydb
+  user: 'tpuser', // importante crear el usuario y dar privilegios para acceder a mydb
   password: process.env.DB_PASS, // y colocar esta password
   database: 'mydb'
 });
@@ -40,18 +40,18 @@ app.get('/api/productos', (req, res) => {
   // se declara la query principal que recibe todos los productos
   let query = 'SELECT gp.id_producto, p.nombre, g.nombre AS nombreGondola, pres.desc_presentacion, gpr.fecha, gpr.cantidad' +
   ' FROM Gondola_Producto AS gp INNER JOIN producto AS  p on gp.id_producto = p.id_producto' +
-  ' INNER JOIN gondola AS g on gp.id_gondola = g.id_gondola INNER JOIN presentacion AS pres on' + 
+  ' INNER JOIN gondola AS g on gp.id_gondola = g.id_gondola INNER JOIN presentacion AS pres on' +
   ' gp.Presentacion_id_presentacion = pres.id_presentacion INNER JOIN Gondola_Producto_Repositor' +
   ' AS gpr on gp.id_producto = gpr.id_producto WHERE gp.id_gondola = gpr.id_gondola AND gp.id_gondola = gpr.id_gondola'
 
   // en caso de que exista repositorId y/o sectorId en los params se concatenara al query la siguiente sentencia
-  if (repositorId) 
+  if (repositorId)
     query += ` AND gpr.id_repositor = ${repositorId}`;
-  if (sectorId) 
+  if (sectorId)
     query += ` AND g.id_sector = ${sectorId}`;
 
   query += ' ORDER BY gp.id_producto ASC'
-  
+
   db.query(query, (err, result) => {
     if (err) {
       console.error('Error en la consulta SQL: ', err);
