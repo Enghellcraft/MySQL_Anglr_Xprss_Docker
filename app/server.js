@@ -9,12 +9,12 @@ let app = express();
 
 // MYSQL
 let mysql = require('mysql');
-var connection = mysql.createConnection({
- host : 'mysql-db',
- user : process.env.DB_USER,
- password : process.env.DB_PASS, 
- database : process.env.MYSQL_DATABASE
-})
+let db = mysql.createConnection({
+  host: 'mysql-db',
+  user: process.env.DB_USER, // importante crear el usuario y dar privilegios para acceder a mydb
+  password: process.env.DB_PASS, // y colocar esta password
+  database: process.env.DB_NAME
+});
 
 // CORS
 const cors = require('cors');
@@ -27,12 +27,6 @@ app.use(cors(corsOptions));
 
 // DOTENV
 require('dotenv').config({ debug: true });
-let db = mysql.createConnection({
-  host: 'mysql-db',
-  user: process.env.DB_USER, // importante crear el usuario y dar privilegios para acceder a mydb
-  password: process.env.DB_PASS, // y colocar esta password
-  database: process.env.DB_NAME
-});
 
 db.connect(function(err) {
   if (err) {

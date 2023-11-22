@@ -12,8 +12,8 @@ services:
   environment:
     DB_USER: 'root'
     DB_PASS: 'P4ssw0rt34_*'
-    DB_NAME: 'db_grupo9'
-    MYSQL_DATABASE: 'db_grupo9'
+    DB_NAME: 'mydb'
+    MYSQL_DATABASE: 'mydb'
  angular-app:
   build:
     context: ./
@@ -30,10 +30,10 @@ services:
       DB_PASS: P4ssw0rt34_*
   environment:
     MYSQL_ROOT_PASSWORD: 'P4ssw0rt34_*'
-    MYSQL_DATABASE: 'db_grupo9'
+    MYSQL_DATABASE: 'mydb'
   healthcheck:
     test: ["CMD", "mysqladmin", "-u", "root", "-pP4ssw0rt34_*", "ping"]
-    timeout: 20s
-    retries: 10
+    timeout: 200s
+    retries: 20
 
 
