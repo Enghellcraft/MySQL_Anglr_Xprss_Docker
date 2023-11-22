@@ -1,5 +1,5 @@
   # Imagen Base oficial node
-  FROM node:18.18.0
+  FROM node:16.19.0
 
   WORKDIR /app
 
@@ -16,4 +16,3 @@
   CMD ["node", "server.js"]
 
 
-  

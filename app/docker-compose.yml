@@ -12,8 +12,8 @@ services:
   environment:
     DB_USER: 'root'
     DB_PASS: 'P4ssw0rt34_*'
-    DB_NAME: 'db_grupo9'
-    MYSQL_DATABASE: 'db_grupo9'
+    DB_NAME: 'mysql-db'
+    MYSQL_DATABASE: 'mysql-db'
  angular-app:
   build:
     context: ./
@@ -23,14 +23,14 @@ services:
   depends_on:
     - mysql-db
  mysql-db:
-  build: 
+  build:
     context: ./
     dockerfile: Dockerfile.mysql
     args:
       DB_PASS: P4ssw0rt34_*
   environment:
     MYSQL_ROOT_PASSWORD: 'P4ssw0rt34_*'
-    MYSQL_DATABASE: 'db_grupo9'
+    MYSQL_DATABASE: 'mysql-db'
   healthcheck:
     test: ["CMD", "mysqladmin", "-u", "root", "-pP4ssw0rt34_*", "ping"]
     timeout: 20s
